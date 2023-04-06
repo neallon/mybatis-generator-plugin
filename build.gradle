@@ -1,0 +1,53 @@
+plugins {
+    id 'groovy'
+    id 'maven-publish'
+    id 'java-gradle-plugin'
+    id 'com.gradle.plugin-publish' version '1.1.0'
+}
+
+group 'io.github.neallon.mybatis-generator'
+version '1.0'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.yaml:snakeyaml:2.0'
+    implementation 'org.mybatis.generator:mybatis-generator-core:1.4.2'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.9.2'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.9.2'
+}
+
+gradlePlugin {
+    plugins {
+        modularPlugin {
+            id = 'io.github.neallon.mybatis-generator'
+            implementationClass = 'io.github.gradle.plugin.MybatisGeneratorPlugin'
+            displayName = "MyBatis Generator for gradle plugin"
+        }
+    }
+}
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            groupId = 'io.github.neallon.mybatis-generator'
+            artifactId = 'mybatis-generator-plugin'
+            version = '1.0'
+
+            from components.java
+        }
+    }
+}
+
+test {
+    useJUnitPlatform()
+}
+
+pluginBundle {
+    website = "https://github.com/zhaihui85/mybatis-generator-plugin"
+    vcsUrl = "https://github.com/zhaihui85/mybatis-generator-plugin"
+    description = "MyBatis Generator for gradle plugin"
+    tags = ['mybatis', 'generator']
+}
