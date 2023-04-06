@@ -46,8 +46,8 @@ test {
 }
 
 pluginBundle {
-    website = "https://github.com/zhaihui85/mybatis-generator-plugin"
-    vcsUrl = "https://github.com/zhaihui85/mybatis-generator-plugin"
+    website = "https://github.com/neallon/mybatis-generator-plugin"
+    vcsUrl = "https://github.com/neallon/mybatis-generator-plugin"
     description = "MyBatis Generator for gradle plugin"
     tags = ['mybatis', 'generator']
 }
